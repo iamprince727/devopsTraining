@@ -1,0 +1,2 @@
+1. Add a User with a Specific Home Directory, Default Shell, and Custom Comment
+
