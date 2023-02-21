@@ -1,2 +1,25 @@
 1. Add a User with a Specific Home Directory, Default Shell, and Custom Comment
 
+sudo adduser --home /path/to/home/directory --shell /path/to/default/shell --comment "Custom Comment" username
+
+
+2. Add a User with Home Directory, Custom Shell, Custom Comment, and UID/GID
+
+sudo adduser --home /path/to/home/directory --shell /path/to/custom/shell --comment "Custom Comment" --uid <UID> --gid <GID> username
+
+
+3. Add a User with Home Directory, No Shell, Custom Comment, and User ID 
+
+sudo adduser --home /path/to/home/directory --shell /bin/false --comment "Custom Comment" --uid <UID> username
+
+
+4. Add a User with Home Directory, Shell, Custom Skell/Comment, and User ID
+
+sudo adduser --home /path/to/home/directory --shell /path/to/custom/shell --comment "Custom Comment" --uid <UID> username
+
+
+5. Add a User without Home Directory, No Shell, No Group, and Custom Comment
+
+sudo adduser --no-create-home --shell /bin/false --no-user-group --comment "Custom Comment" username
+
+

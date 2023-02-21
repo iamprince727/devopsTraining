@@ -1,0 +1,49 @@
+1. Change the permission set of /training/readme.txt so that only the user (owner) can read,write, and execute it. Use absolute mode.
+
+sudo chmod 700 /training/readme.txt
+
+breakdown of 700
+    7 - first digit is for permission for the owner of the file
+    0 - second digit is for permission for the group owner of the file
+    0 - third digit is for permission for others
+
+    Read (4), Write (2), Execute (1)
+
+- 7: Sets the owner's file permissions to rwx (read, write, and execute).
+- 0: Sets the group owner's file permissions to --- (no permissions).
+- 0: Sets the permissions for others to --- (no permissions).
+
+
+2. Change the permission set of /training/readme.txt so that any user can read it, the group can read/write to it and the user (owner) can read/write/execute it. Use absolute mode
+
+sudo chmod 764 /training/readme.txt
+
+
+3. Change the permission set of /training/readme.txt so that only the user (owner) can read, write, and execute it. Use symbolic mode.
+
+sudo chmod u+rwx /training/readme.txt
+
+
+4. Change the permission set of /training/readme.txt so that any user can read it, the group can read/write to it and the user (owner) can read/write/execute it. Use symbolic mode.
+
+sudo chmod u=rwx,g=rw,o=r /training/readme.txt
+
+    u - owner
+    g - group
+    o - others
+
+
+5. Change the permission set of /training/readme.txt so that only the user (owner) can read/write/ execute, group, and any user can execute it. However, whenever anyone executes it, it should run with the privileges of the group. Use absolute mode.
+
+sudo chmod 4750 /training/readme.txt
+
+4: Sets the setuid bit. This allows the file to be executed with the privileges of the group owner.
+7: Sets read, write, and execute permissions for the owner.
+5: Sets read and execute permissions for the group.
+0: Sets no permission for others.
+
+
+6. Change the permission set of /training/readme.txt so that only the owner can rename or delete this file while maintaining the existing permissions. Use absolute mode.
+
+sudo chmod 600 readme.txt
+
