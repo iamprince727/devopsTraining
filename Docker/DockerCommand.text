@@ -1,0 +1,40 @@
+1. Start 4 containers from an image that does not automatically exit, such as nginx, detached.
+
+// command 
+- sudo docker pull nginx
+- sudo docker run --name imagefirst -d nginx
+- sudo docker run --name imagesecond -d nginx
+- sudo docker run --name imagethird -d nginx
+- sudo docker run --name imagefour -d nginx
+
+
+- sudo docker ps 
+
+// after running above command the output on terminal is 
+
+
+CONTAINER ID   IMAGE     COMMAND                  CREATED              STATUS              PORTS     NAMES
+dc96d0db5869   nginx     "/docker-entrypoint.…"   About a minute ago   Up About a minute   80/tcp    imagefour
+d2dd0f2c3409   nginx     "/docker-entrypoint.…"   2 minutes ago        Up 2 minutes        80/tcp    imagethird
+20206aea7431   nginx     "/docker-entrypoint.…"   2 minutes ago        Up 2 minutes        80/tcp    imagesecond
+6c5d4173bab4   nginx     "/docker-entrypoint.…"   2 minutes ago        Up 2 minutes        80/tcp    imagefirst
+
+
+
+2. Stop 2 of the containers leaving 2 up.
+
+
+- sudo docker stop d2dd0f2c3409
+- sudo docker stop imagefirst
+
+
+- sudo docker ps 
+
+// after running above command the output on terminal is
+
+
+CONTAINER ID   IMAGE     COMMAND                  CREATED         STATUS         PORTS     NAMES
+dc96d0db5869   nginx     "/docker-entrypoint.…"   4 minutes ago   Up 4 minutes   80/tcp    imagefour
+20206aea7431   nginx     "/docker-entrypoint.…"   4 minutes ago   Up 4 minutes   80/tcp    imagesecond
+
+
