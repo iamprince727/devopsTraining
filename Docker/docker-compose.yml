@@ -1,0 +1,57 @@
+version: '3'
+
+services:
+
+  # Web server
+  web:
+    image: nginx:latest
+    command: bash -c "apt-get update && apt-get install -y iputils-ping && nginx -g 'daemon off;'"
+    ports:
+      - "80:80"
+    volumes:
+      - ./html:/usr/share/nginx/html
+    networks:
+      - appnet
+
+  # Database server
+  db:
+    image: mysql:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: mydatabase
+    volumes:
+      - ./db:/var/lib/mysql
+    networks:
+      - appnet
+
+  # Cache server
+  cache:
+    image: redis:latest
+    volumes:
+      - ./cache:/data
+    networks:
+      - appnet
+
+networks:
+  appnet:
+
+volumes:
+  db:
+  cache:
+
+
+
+# Exec inside the container and ping other service private IP
+
+# sudo docker exec -it <container ID> sh
+
+# now you are inside the container, where you can ping other container/service which is in same network
+
+# ping <container ID>
+
+# here is the example
+# ping c9fa009271ad
+# PING c9fa009271ad (172.18.0.3) 56(84) bytes of data.
+# 64 bytes from docker_cache_1.docker_appnet (172.18.0.3): icmp_seq=1 ttl=64 time=0.164 ms
+# 64 bytes from docker_cache_1.docker_appnet (172.18.0.3): icmp_seq=2 ttl=64 time=0.091 ms
+# 64 bytes from docker_cache_1.docker_appnet (172.18.0.3): icmp_seq=3 ttl=64 time=0.081 ms
