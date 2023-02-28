@@ -47,7 +47,7 @@ volumes:
 
 # now you are inside the container, where you can ping other container/service which is in same network
 
-# ping <container ID>
+# ping <container ID> or <IP address>, you will get the IP address if you ping any container as you can see below
 
 # here is the example
 # ping c9fa009271ad
